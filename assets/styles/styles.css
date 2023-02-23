@@ -6,6 +6,11 @@
 .display-1{
     color: deeppink;
 }
+.carousel-caption{
+    bottom:35%;
+}
+
+
 /*botones*/
  a.btn.btn-primary,.btn.btn-primary{
     --bs-btn-bg: #c9488ffd !important;
