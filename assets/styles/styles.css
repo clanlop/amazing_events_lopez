@@ -1,0 +1,70 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.display-1{
+    color: deeppink;
+}
+/*botones*/
+ a.btn.btn-primary,.btn.btn-primary{
+    --bs-btn-bg: #c9488ffd !important;
+    --bs-btn-border-color:#fd0d81b4(--bs-btn-border-color) !important;
+
+}
+.btn-primary{
+    --bs-btn-hover-bg: #fd0d81f6 !important;
+    --bs-btn-hover-border-color:#fd0d81eb(--bs-btn-border-color) !important;
+    --bs-btn-active-bg:#fd0d81f6;
+    --bs-btn-active-border-color:#fd0d81f6;
+} 
+
+
+.emailC{
+    background-color: black;
+    color:darkgrey;
+    border-radius: 1rem;
+}
+/*details*/
+ h2.card-title{
+    color:deeppink;
+}
+li::marker{
+    color:deeppink;
+}
+
+/*footer*/
+.textF{
+    font-size:13px;
+}
+/*redes*/
+
+   
+ svg.bi.bi-facebook:hover{
+       color:rgb(0, 89, 255);
+      
+       }
+       svg.bi.bi-whatsapp:hover{
+        color:rgb(85, 255, 0);
+       
+        }
+        svg.bi.bi-instagram:hover{
+            color:rgb(255, 0, 170);
+           
+            }
+ .table-danger{
+        margin: 1rem;
+        border: slategray solid 1px;
+     }       
+  th{
+    background-color: lightpink;
+    padding: 3px;
+    height: 2rem;
+  }   
+  td{
+    padding: 3px;
+    background-color: mistyrose;
+    border: slategray solid 1px;
+    height: 2rem;
+    
+  }
