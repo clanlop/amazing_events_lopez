@@ -9,8 +9,6 @@
 .carousel-caption{
     bottom:35%;
 }
-
-
 /*botones*/
  a.btn.btn-primary,.btn.btn-primary{
     --bs-btn-bg: #c9488ffd !important;
@@ -34,26 +32,25 @@
  h2.card-title{
     color:deeppink;
 }
-li::marker{
+  li::marker{
     color:deeppink;
 }
 
-/*footer*/
-.textF{
+   /*footer*/
+
+   .textF{
     font-size:13px;
 }
-/*redes*/
-
-   
- svg.bi.bi-facebook:hover{
+  /*redes*/
+    svg.bi.bi-facebook:hover{
        color:rgb(0, 89, 255);
       
        }
-       svg.bi.bi-whatsapp:hover{
+    svg.bi.bi-whatsapp:hover{
         color:rgb(85, 255, 0);
        
         }
-        svg.bi.bi-instagram:hover{
+    svg.bi.bi-instagram:hover{
             color:rgb(255, 0, 170);
            
             }
