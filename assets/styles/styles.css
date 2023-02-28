@@ -69,3 +69,14 @@
     height: 2rem;
     
   }
+  @media screen and (max-width:576px){
+    .container.d-flex {
+    flex-direction: column-reverse;
+    width:100%;
+    
+    }
+    ul.nav{
+      padding: 1rem;
+    }
+    
+    }
