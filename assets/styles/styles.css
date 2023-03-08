@@ -21,11 +21,26 @@
     --bs-btn-active-bg:#fd0d81f6;
     --bs-btn-active-border-color:#fd0d81f6;
 } 
+.container-fluid{
+  display:grid;
+  place-content: center;
+}
+.card-img-top{
+  height: 70% !important;
+ 
+
+}
+
+  .row{
+    justify-content: space-evenly;
+  }
 
 .emailC{
     background-color: black;
     color:darkgrey;
     border-radius: 1rem;
+    width: 50%;
+   
 }
 /*details*/
  h2.card-title{
@@ -35,9 +50,7 @@
     color:deeppink;
 }
 
-   /*footer*/
-
-   .textF{
+ .textF{
     font-size:13px;
 }
   /*redes*/
@@ -53,7 +66,14 @@
             color:rgb(255, 0, 170);
            
             }
+            
+  /*tabla*/
+  .table{
+  display:grid;
+  place-content: center;
+            }
  .table-danger{
+  
         margin: 1rem;
         border: slategray solid 1px;
      }       
@@ -69,14 +89,42 @@
     height: 2rem;
     
   }
-  @media screen and (max-width:576px){
+ 
+  @media screen and (max-width:624px){
     .container.d-flex {
-    flex-direction: column-reverse;
-    width:100%;
+    flex-wrap: wrap;
+     width:100%;
     
     }
-    ul.nav{
-      padding: 1rem;
-    }
     
+  .col{
+    width: 100% !important;
+    flex: auto;
+   }
+    .card{
+      margin-right: 0;
+      width: 100% !important;
+    
+
     }
+  } 
+ 
+ 
+  @media (max-width: 768px){ 
+     .NavB {
+      display: none;
+    }}
+    
+    @media (min-width: 769px){ 
+      .NavH{
+        display: none;}
+      }
+
+
+#card{
+  display: flex;
+    flex-wrap: wrap;
+    gap :1rem;
+    padding: 1rem;
+    justify-content: center;
+}
