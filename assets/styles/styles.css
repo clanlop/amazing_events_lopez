@@ -3,6 +3,14 @@
     padding: 0;
     box-sizing: border-box;
 }
+body{
+
+  background-image: url('../img/Background\ 31-3.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+
+}
 .display-1{
     color: deeppink;
 }
@@ -31,15 +39,13 @@
 
 }
 
-  .row{
-    justify-content: space-evenly;
-  }
+ 
 
 .emailC{
     background-color: black;
     color:darkgrey;
     border-radius: 1rem;
-    width: 50%;
+    width: 95%;
    
 }
 /*details*/
@@ -76,9 +82,10 @@
   
         margin: 1rem;
         border: slategray solid 1px;
+        
      }       
   th{
-    background-color: lightpink;
+    background-color: #ef477cc9;
     padding: 3px;
     height: 2rem;
   }   
@@ -90,12 +97,16 @@
     
   }
  
-  @media screen and (max-width:624px){
+  @media screen and (max-width:465px){
     .container.d-flex {
-    flex-wrap: wrap;
+    flex-wrap:wrap;
      width:100%;
+     
     
     }
+    .textF{
+      font-size:11px;
+  }
     
   .col{
     width: 100% !important;
@@ -113,11 +124,25 @@
   @media (max-width: 768px){ 
      .NavB {
       display: none;
-    }}
+    } 
+    
+     .check{
+      flex-direction: column;
+      
+      
+     }
+     .btn-outline-danger{
+      display: none;
+ 
+     }
+  }
     
     @media (min-width: 769px){ 
       .NavH{
         display: none;}
+        .d-flex{
+          align-items: center;
+        }
       }
 
 
@@ -127,4 +152,10 @@
     gap :1rem;
     padding: 1rem;
     justify-content: center;
+   
+}
+#contDetails{
+ 
+  
+   
 }
