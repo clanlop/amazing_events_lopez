@@ -1,50 +1,53 @@
 
 // buscador por categorias y nombre de evento
-const input=document.querySelector('input')
-console.log(input)
-const check= document.getElementById('check')
-console.log(check)
 
-//cuando selecciono
-input.addEventListener('input',superFiltro)
- check.addEventListener('change',superFiltro)
+const input = document.querySelector("#search");
+const check= document.getElementById('check')
+
+//aca llame al super filtro en lugar de solo filtrar texto
+input.addEventListener(
+  "input",
+  () => {
+    superFiltro();
+  });
+
+check.addEventListener('change',superFiltro)
 
 function superFiltro(){
-  let primerFiltro=filtrarPorTexto(eventsfut,input.value)
-  let segundoFiltro=filtrarPorCat(primerFiltro)
-  mostrarCards(segundoFiltro)
+  let primerFiltro=filtrarPorTexto(eventsfut,input.value);
+  let segundoFiltro=filtrarPorCat(primerFiltro);
+  mostrarCards(segundoFiltro);
 }
-
-
 
 const tarjeta= document.getElementById ('card')
 let eventsfut=data.events.filter((event)=>
 event.date >= data.currentDate)
 console.log(eventsfut)
 
-function mostrarCards(eventsfut){
+function mostrarCards(arrayEvents){
  let tarjetas='';
-  if (eventsfut.length==0){
+  if (arrayEvents.length==0){
     tarjeta.innerHTML=`<h4 class=display-1  fw-bolder text-color:red >No hay cincidencias posibles </h4>`;
     return ;
     }
   tarjeta.innerHTML=""
-  eventsfut.forEach(event => {
+  arrayEvents.forEach(event => {
   tarjetas += `
       <div class="card" style="width:17rem ">
       <img src= ${event.image} class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">${event.name}</h5>
+        <p class="card-text">${event.category}</p>
         <p class="card-text">${event.description}</p>
         <p class="card-text">Price: $ ${event.price}</p>
         <p class="card-text"> ${event.date}</p>
         <a href="./details.html?_id=${event._id}" class="btn btn-primary">Go somewhere</a>
       </div>
-      </div>` 
-      })
-    tarjeta.innerHTML = tarjetas
-  };
-  mostrarCards(eventsfut)
+      </div>` ;
+      });
+    tarjeta.innerHTML = tarjetas;
+  }
+  mostrarCards(eventsfut);
 
 
   function filtrarPorTexto (array,texto) {

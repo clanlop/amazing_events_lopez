@@ -33,6 +33,7 @@ function mostrarCards(eventspast){
       <img src= ${event.image} class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">${event.name}</h5>
+        <p class="card-text">${event.category}</p>
         <p class="card-text">${event.description}</p>
         <p class="card-text">Price: $ ${event.price}</p>
         <p class="card-text"> ${event.date}</p>

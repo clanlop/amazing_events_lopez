@@ -18,7 +18,7 @@ contDetails.innerHTML += `
   <div class="card mb-3" style="width:45rem;border:rgba(176, 47, 116, 0.988) solid;">
     <div class="row">
       <div class="col-md-5">
-        <img src= ${evento.image}class="img-fluid start h-100" alt="">
+        <img id="imgDet" src= ${evento.image}class="img-fluid start h-100  alt="">
       </div>
       <div class="col-md-7">
         <div class="card-body ">
@@ -32,7 +32,7 @@ contDetails.innerHTML += `
             <li>Place: ${evento.place} </li>
             <li>Capacity: ${evento.capacity} </li>
             <li>Assistance or estimate: ${evento.assistance} </li>
-            <li>Price:   </li>
+            <li>Price: $${evento.price}   </li>
 
           </ul>
         </div>

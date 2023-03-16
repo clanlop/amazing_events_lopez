@@ -112,12 +112,7 @@ body{
     width: 100% !important;
     flex: auto;
    }
-    .card{
-      margin-right: 0;
-      width: 100% !important;
     
-
-    }
   } 
  
  
@@ -135,6 +130,13 @@ body{
       display: none;
  
      }
+     .card{
+      margin-right: 0;
+      width: 100% !important;
+    
+
+    }
+     
   }
     
     @media (min-width: 769px){ 
@@ -154,8 +156,12 @@ body{
     justify-content: center;
    
 }
-#contDetails{
- 
-  
-   
+#imgDet{
+ width:100%;
+    height: 100%;
+    object-fit: cover;
 }
+
+
+   
+
