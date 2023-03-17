@@ -1,19 +1,8 @@
 
-// buscador por categorias y nombre de evento
-const input=document.querySelector('input')
-console.log(input)
-const check= document.getElementById('check')
-console.log(check)
 
-//cuando selecciono
-input.addEventListener('input',superFiltro)
- check.addEventListener('change',superFiltro)
 
-function superFiltro(){
-  let primerFiltro=filtrarPorTexto(data.events,input.value)
-  let segundoFiltro=filtrarPorCat(primerFiltro)
-  mostrarCards(segundoFiltro)
-}
+
+
 console.log(document.getElementById ('card'))
 const tarjeta= document.getElementById ('card')
 
@@ -45,6 +34,21 @@ tarjetas += `
 mostrarCards(data.events)
 
 
+// buscador por categorias y nombre de evento
+const input=document.querySelector('input')
+console.log(input)
+const check= document.getElementById('check')
+console.log(check)
+
+//cuando selecciono
+input.addEventListener('input',superFiltro)
+ check.addEventListener('change',superFiltro)
+
+function superFiltro(){
+  let primerFiltro=filtrarPorTexto(data.events,input.value)
+  let segundoFiltro=filtrarPorCat(primerFiltro)
+  mostrarCards(segundoFiltro)
+}
 
 function filtrarPorTexto (array,texto) {
   let arrayFiltrado= array.filter(elemento =>
