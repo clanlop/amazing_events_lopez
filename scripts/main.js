@@ -1,7 +1,27 @@
+ let datos;
+ const obtenerDatos=async()=>{
+try{
+  const respuesta=await fetch('https://mindhub-xj03.onrender.com/api/amazing')
+  datos=await respuesta.json()
+  console.log(datos);
+  mostrarCards(datos.events);
+  let categorias=datos.events.map((event)=>event.category )
+  console.log(categorias)
+  const catfil = categorias.filter((event, indice) => {
+  return categorias.indexOf(event) === indice;
+ });
+  console.log(catfil)
+  pegarcategory(catfil)
 
+   }
+   catch(error){
+   console.log(error);
+     alert('Error');
+    }
 
+ }
 
-
+    obtenerDatos();
 
 console.log(document.getElementById ('card'))
 const tarjeta= document.getElementById ('card')
@@ -31,7 +51,7 @@ tarjetas += `
   })
   tarjeta.innerHTML = tarjetas
 };
-mostrarCards(data.events)
+
 
 
 // buscador por categorias y nombre de evento
@@ -45,7 +65,7 @@ input.addEventListener('input',superFiltro)
  check.addEventListener('change',superFiltro)
 
 function superFiltro(){
-  let primerFiltro=filtrarPorTexto(data.events,input.value)
+  let primerFiltro=filtrarPorTexto(datos.events,input.value)
   let segundoFiltro=filtrarPorCat(primerFiltro)
   mostrarCards(segundoFiltro)
 }
@@ -71,19 +91,10 @@ function filtrarPorTexto (array,texto) {
     return array
   }
   
-let categorias=data.events.map((event)=>event.category )
-console.log(categorias)
-
-//filtre las que se repiten
-const catfil = categorias.filter((event, indice) => {
-  return categorias.indexOf(event) === indice;
-}
-);
-console.log(catfil)
-
 let categories='';
 
 function pegarcategory(catfil){
+ 
 check.innerHTML=""
 catfil.forEach(event => {
   categories+=`<label class="checkbox-inline p-2">
@@ -92,6 +103,6 @@ catfil.forEach(event => {
 })
 check.innerHTML=categories
 }
-pegarcategory(catfil)
+
 
 

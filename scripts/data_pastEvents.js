@@ -1,27 +1,38 @@
 
-// buscador por categorias y nombre de evento
-const input=document.querySelector('input')
-console.log(input)
-const check= document.getElementById('check')
-console.log(check)
-
-//cuando selecciono
-input.addEventListener('input',superFiltro)
- check.addEventListener('change',superFiltro)
-
-function superFiltro(){
-  let primerFiltro=filtrarPorTexto(eventspast,input.value)
-  let segundoFiltro=filtrarPorCat(primerFiltro)
-  mostrarCards(segundoFiltro)
+let datos;
+const obtenerDatos=async()=>{
+try{
+ const respuesta=await fetch('https://mindhub-xj03.onrender.com/api/amazing')
+ datos=await respuesta.json()
+ console.log(datos);
+ arrayEventsPast=eventspast(datos.events,datos.currentDate)
+ console.log(arrayEventsPast)
+ mostrarCards(arrayEventsPast)
+ superFiltro()
+ mostrarCat(arrayEventsPast)
 }
+catch(error){
+console.log(error);
+  alert('Error');
+ }
 
-const tarjeta= document.getElementById ('card')
-let eventspast=data.events.filter((event)=>
-  event.date < data.currentDate)
-console.log(eventspast)
+}
+obtenerDatos();
 
-function mostrarCards(eventspast){
-  let tarjetas='';
+ // buscador por categorias y nombre de evento
+   const input=document.querySelector('input')
+   console.log(input)
+   const check= document.getElementById('check')
+   console.log(check)
+
+   function eventspast(datos,currentDate){
+    return datos.filter(event=>event.date < currentDate)
+    }
+
+
+    const tarjeta= document.getElementById ('card')
+   function mostrarCards(eventspast){
+ let tarjetas='';
   if (eventspast.length==0){
     tarjeta.innerHTML=`<h4 class=display-1  fw-bolder text-color:red >No hay cincidencias posibles </h4>`;
     return ;
@@ -43,11 +54,8 @@ function mostrarCards(eventspast){
       
     })
     tarjeta.innerHTML = tarjetas
-  };
-
-  mostrarCards(eventspast)
-
-  function filtrarPorTexto (array,texto) {
+    };
+    function filtrarPorTexto (array,texto) {
     let arrayFiltrado= array.filter(elemento =>
     elemento.name.toLowerCase().includes(texto.toLowerCase()))
    return arrayFiltrado
@@ -57,39 +65,46 @@ function mostrarCards(eventspast){
       let checkbox=document.querySelectorAll("input[type='checkbox']")
       let arraychecks=Array.from(checkbox)
       let arraycheckchecked=arraychecks.filter(chek=>chek.checked)
-      console.log(arraycheckchecked);
       let arraycheckcheckedValues=arraycheckchecked.map(checkchecked=>checkchecked.value)
-      console.log(arraycheckcheckedValues);
       let arrayFiltrado=array.filter(elemento=>arraycheckcheckedValues.includes(elemento.category))
-      console.log(arrayFiltrado);
       if (arraycheckchecked.length > 0){
         return arrayFiltrado
       }
       return array
     }
+
+    function superFiltro(){
+      input.addEventListener('input',superFiltro)
+      check.addEventListener('change',superFiltro)
+      let primerFiltro=filtrarPorTexto(arrayEventsPast,input.value)
+      let segundoFiltro=filtrarPorCat(primerFiltro)
+      mostrarCards(segundoFiltro)
+    }
+    //categorias
+    function mostrarCat(array){
+    let categorias=array.map((event)=>event.category )
+    console.log(categorias)
+  
+  //filtre las que se repiten
+  const catfil = categorias.filter((event, indice) => {
+    return categorias.indexOf(event) === indice;
     
+  })
+  console.log(catfil)
+  
+  let categories=''
+ 
+  check.innerHTML=""
+  catfil.forEach(event => {
+    categories+=`<label class="checkbox-inline p-2">
+    <input type="checkbox" id="${event}" value="${event}"> ${event}
+  </label>`
+  })
+  
+  check.innerHTML=categories
 
-  //categorias
 
-let categorias=data.events.map((event)=>event.category )
-console.log(categorias)
-
-//filtre las que se repiten
-const catfil = categorias.filter((event, indice) => {
-  return categorias.indexOf(event) === indice;
 }
-);
-console.log(catfil)
 
-let categories='';
 
-function pegarcategory(catfil){
-check.innerHTML=""
-catfil.forEach(event => {
-  categories+=`<label class="checkbox-inline p-2">
-  <input type="checkbox" id="${event}" value="${event}"> ${event}
-</label>`
-})
-check.innerHTML=categories
-};
-pegarcategory(catfil)
+

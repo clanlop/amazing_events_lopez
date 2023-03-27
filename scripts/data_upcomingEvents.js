@@ -1,38 +1,52 @@
+let datos;
+const obtenerDatos=async()=>{
+try{
+ const respuesta=await fetch('https://mindhub-xj03.onrender.com/api/amazing')
+ datos=await respuesta.json()
+ console.log(datos);
+ arrayEventsFut=eventsfut(datos.events,datos.currentDate)
+ console.log(arrayEventsFut)
+ mostrarCards(arrayEventsFut);
+ mostrarCat(arrayEventsFut)
+ superFiltro()
+ }
+catch(error){
+console.log(error);
+  alert('Error');
+ }
+}
+obtenerDatos();
 
 // buscador por categorias y nombre de evento
-
 const input = document.querySelector("#search");
-const check= document.getElementById('check')
+  const check= document.getElementById('check')
 
-//aca llame al super filtro en lugar de solo filtrar texto
-input.addEventListener(
+    function superFiltro(){
+  input.addEventListener(
   "input",
   () => {
     superFiltro();
   });
+  check.addEventListener('change',superFiltro)
 
-check.addEventListener('change',superFiltro)
-
-function superFiltro(){
-  let primerFiltro=filtrarPorTexto(eventsfut,input.value);
+  let primerFiltro=filtrarPorTexto(arrayEventsFut,input.value);
   let segundoFiltro=filtrarPorCat(primerFiltro);
-  mostrarCards(segundoFiltro);
-}
+    mostrarCards(segundoFiltro);}
 
-const tarjeta= document.getElementById ('card')
-let eventsfut=data.events.filter((event)=>
-event.date >= data.currentDate)
-console.log(eventsfut)
+   function eventsfut(datos,currentDate){
+  return datos.filter(event=>event.date >= currentDate)
+    }
 
-function mostrarCards(arrayEvents){
- let tarjetas='';
-  if (arrayEvents.length==0){
+    const tarjeta= document.getElementById ('card')
+    function mostrarCards(arrayEvents){
+    let tarjetas='';
+    if (arrayEvents.length==0){
     tarjeta.innerHTML=`<h4 class=display-1  fw-bolder text-color:red >No hay cincidencias posibles </h4>`;
     return ;
     }
-  tarjeta.innerHTML=""
-  arrayEvents.forEach(event => {
-  tarjetas += `
+    tarjeta.innerHTML=""
+     arrayEvents.forEach(event => {
+      tarjetas += `
       <div class="card" style="width:17rem ">
       <img src= ${event.image} class="card-img-top" alt="...">
       <div class="card-body">
@@ -45,53 +59,47 @@ function mostrarCards(arrayEvents){
       </div>
       </div>` ;
       });
-    tarjeta.innerHTML = tarjetas;
-  }
-  mostrarCards(eventsfut);
-
-
-  function filtrarPorTexto (array,texto) {
+         tarjeta.innerHTML = tarjetas;
+      }
+      function filtrarPorTexto (array,texto) {
     let arrayFiltrado= array.filter(elemento =>
     elemento.name.toLowerCase().includes(texto.toLowerCase()))
    return arrayFiltrado
-    }
-    function filtrarPorCat(array){
+      }
+      function filtrarPorCat(array){
       let checkbox=document.querySelectorAll("input[type='checkbox']")
       let arraychecks=Array.from(checkbox)
       let arraycheckchecked=arraychecks.filter(chek=>chek.checked)
-      console.log(arraycheckchecked);
       let arraycheckcheckedValues=arraycheckchecked.map(checkchecked=>checkchecked.value)
-      console.log(arraycheckcheckedValues);
       let arrayFiltrado=array.filter(elemento=>arraycheckcheckedValues.includes(elemento.category))
-      console.log(arrayFiltrado);
+      
       if (arraycheckchecked.length > 0){
         return arrayFiltrado
       }
       return array
-    } 
+      } 
 
-
- //categorias
-
-let categorias=data.events.map((event)=>event.category )
-console.log(categorias)
+      function mostrarCat(array){
+  let categorias=array.map((event)=>event.category )
+  console.log(categorias)
 
 //filtre las que se repiten
 const catfil = categorias.filter((event, indice) => {
   return categorias.indexOf(event) === indice;
-}
-);
+  
+})
 console.log(catfil)
 
+let categories=''
 
-function pegarcategory(catfil){
-let categories='';
 check.innerHTML=""
 catfil.forEach(event => {
   categories+=`<label class="checkbox-inline p-2">
   <input type="checkbox" id="${event}" value="${event}"> ${event}
 </label>`
 })
+
 check.innerHTML=categories
-};
-pegarcategory(catfil)
+
+
+      }

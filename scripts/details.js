@@ -1,15 +1,34 @@
-
 const queryString=location.search
-console.log(queryString)
-const _id=new URLSearchParams(queryString).get('_id')
+ console.log(queryString)
+ const _id=new URLSearchParams(queryString).get('_id')
 
 
-const evento=data.events.find(event=>event._id==_id)
-console.log(evento)
+let datos;
+const obtenerDatos=async()=>{
+try{
+ const respuesta=await fetch('https://mindhub-xj03.onrender.com/api/amazing')
+ datos=await respuesta.json()
+ console.log(datos);
+ mostrarDetails(datos.events)
+}
+catch(error){
+console.log(error);
+  alert('Error');
+ }
 
-let contDetails =document.getElementById('contDetails');
-console.log(contDetails)
+}
 
+ obtenerDatos();
+
+ 
+ let contDetails =document.getElementById('contDetails');
+ console.log(contDetails)
+
+function mostrarDetails(){ 
+  const evento=datos.events.find(event=>event._id==_id)
+  console.log(evento)
+
+ 
 contDetails.innerHTML=""
 contDetails.innerHTML += `
 
@@ -42,6 +61,7 @@ contDetails.innerHTML += `
 </div>
 </div>
  `
+} 
 
 
 
