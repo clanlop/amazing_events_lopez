@@ -41,7 +41,7 @@ contDetails.innerHTML += `
       </div>
       <div class="col-md-7">
         <div class="card-body ">
-          <h2 class="card-title">Data</h2>
+          <h2 class="card-title">${evento.name}</h2>
           <p class="card-text">Every event contains the following data.</p>
           <ul>
             <li>Name: ${evento.name} </li>

@@ -19,7 +19,7 @@ console.log(error);
 }
 obtenerDatos();
 
- // buscador por categorias y nombre de evento
+ // buscador por categorias y nombre de evento./scripts/amazing.json
    const input=document.querySelector('input')
    console.log(input)
    const check= document.getElementById('check')
@@ -34,7 +34,7 @@ obtenerDatos();
    function mostrarCards(eventspast){
  let tarjetas='';
   if (eventspast.length==0){
-    tarjeta.innerHTML=`<h4 class=display-1  fw-bolder text-color:red >No hay cincidencias posibles </h4>`;
+    tarjeta.innerHTML=`<h4 class=display-1  fw-bolder text-color:red > No matches possible!!</h4>`;
     return ;
     }
   tarjeta.innerHTML=""
@@ -42,12 +42,12 @@ obtenerDatos();
   tarjetas += `
       <div class="card" style="width:17rem ">
       <img src= ${event.image} class="card-img-top" alt="...">
-      <div class="card-body">
+      <div class="card-body card">
         <h5 class="card-title">${event.name}</h5>
         <p class="card-text">${event.category}</p>
         <p class="card-text">${event.description}</p>
-        <p class="card-text">Price: $ ${event.price}</p>
-        <p class="card-text"> ${event.date}</p>
+        <p class="card-text">${event.date}</p>
+        <p class="card-text">Price: $ ${event.price} </p>
         <a href="./details.html?_id=${event._id}" class="btn btn-primary">Go somewhere</a>
       </div>
       </div>` 

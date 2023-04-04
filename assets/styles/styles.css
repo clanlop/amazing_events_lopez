@@ -33,11 +33,7 @@ body{
   display:grid;
   place-content: center;
 }
-.card-img-top{
-  height: 70% !important;
- 
 
-}
 
  
 
@@ -168,6 +164,23 @@ body{
     object-fit: cover;
 }
 
+.card-img-top{
 
-   
+  object-fit:cover!important;
+ 
+  height: 250px;
+ }
+ 
+a.cards.btn.btn-primary{
+  margin-top: 20px;
+  border-radius: 0.5em;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    
 
+}
+.card-body.card {
+  justify-content: space-between;
+
+
+}
