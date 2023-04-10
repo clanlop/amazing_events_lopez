@@ -179,8 +179,9 @@ a.cards.btn.btn-primary{
     
 
 }
-.card-body.card {
-  justify-content: space-between;
+.card-body.card{
+  justify-content: space-between !important;
 
-
+  border-start-end-radius: 0px;
+  border-start-start-radius: 0px;
 }
